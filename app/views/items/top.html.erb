@@ -9,8 +9,18 @@
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <% end %>
                             <!-- Product image-->
-                            <%= link_to("登録する", edit_item_path(item)) %>
-                            <%= image_tag item.image_name.url, class: 'card-img-top', size: '300x450' %>
+                            <%= form_with model: item, local: true do |f| %>
+                            <div class="form-group">
+                                <%= f.label :image_name, for: "file-input" do %>
+                                 <%= image_tag item.image_name_url, class: 'card-img-top', size: '300x450' %>
+                                <% end %>
+                                <%= f.file_field :image_name, id: "file-input", style: "display: none;", accept: 'image/*' %>
+                                <%#= f.hidden_field :image_name_image_cache %>
+                            </div>
+
+                            <%= f.submit class: 'btn btn-primary' %>
+                            <% end %>
+                            <%# link_to("登録する", edit_item_path(item)) %>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">

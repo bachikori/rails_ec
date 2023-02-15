@@ -1,7 +1,6 @@
 <div>
     <%= form_with model: @item,  multipart: true , local: true do |f| %>
     <div class="form-group">
-    <%# <input type="file" name="image_uploaded"> %>
         <%= f.label :image_name %>
         <%= f.file_field :image_name, class: 'form-control mb-3', accept: 'image/*' %>
         <%= f.hidden_field :image_cache %>
