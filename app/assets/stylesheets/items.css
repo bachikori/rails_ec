@@ -1,0 +1,26 @@
+input[type=file].file-input {
+    display: none;
+}
+
+.btn-experiece-primary {
+    background-color: #6CCBE9;
+    color: #FFFFFF;
+}
+.btn {
+    width: 165px;
+    transition: 0.3s;
+    font-family: 'NotoSansCJKjp-Medium-Subset';
+}
+.file-name {
+    display: inline-block;
+    width: 75%;
+    margin-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+.input-prepend {
+  margin-top: 10px;
+}
