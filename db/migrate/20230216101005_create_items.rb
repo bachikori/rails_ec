@@ -7,8 +7,8 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.integer :price, null: false
       t.integer :stock, null: false
       t.string :image_name, null: false
-      t.boolean :review
-      t.boolean :sale
+      t.boolean :review, null: false, default: false
+      t.boolean :sale, null: false, default: false
       t.integer :sale_price
 
       t.timestamps
