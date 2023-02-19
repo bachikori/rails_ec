@@ -2,5 +2,5 @@
 
 Rails.application.routes.draw do
   root 'items#top'
-  # resources :items
+  resources :items
 end
