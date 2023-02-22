@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   def show
     @items_random = Item.order(Arel.sql('RANDOM()')).limit(4)
     @item = Item.find(params[:id])
-    p @item.id
+    Rails.logger.debug @item.id
     # binding.pry
   end
 end

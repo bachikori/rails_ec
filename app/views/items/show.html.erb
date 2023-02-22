@@ -74,8 +74,14 @@
             </div>
           </div>
           <!-- Product actions-->
-          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
+            <%= form_with url: cart_items_path do |form| %>
+            <%= hidden_field_tag :item_id, item.id %>
+            <%= button_tag(type= "submit", class: "btn btn-outline-dark flex-shrink-0") do %>
+            <i class="bi-cart-fill me-1"></i>
+            Add to cart
+            <% end %>
+            <% end %>
           </div>
         </div>
       </div>
