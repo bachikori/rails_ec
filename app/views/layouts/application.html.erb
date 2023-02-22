@@ -37,9 +37,13 @@
         </ul>
         <form class="d-flex">
           <button class="btn btn-outline-dark" type="submit">
+            <% @cart_items.each do |cart_item| %>
+            <% item = Item.find_by(id: cart_item.item_id) %>
+            <% @top_quantity += cart_item.quantity %>
+            <% end %>
             <i class="bi-cart-fill me-1"></i>
             Cart
-            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+            <span class="badge bg-dark text-white ms-1 rounded-pill"><%= @top_quantity %></span>
           </button>
         </form>
       </div>
