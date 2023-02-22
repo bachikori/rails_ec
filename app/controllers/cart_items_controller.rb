@@ -8,7 +8,14 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(item_id: params[:item_id], quantity: params[:quantity] ? params[:quantity] : 1)
     @cart_item.save
+    p @cart_item
     # binding.pry
-    redirect_to item_cart_items_path(params[:item_id])
+    redirect_to cart_items_path
+  end
+
+  def destroy
+    @cart_item = CartItem.find_by(item_id: params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
   end
 end

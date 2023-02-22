@@ -22,13 +22,18 @@
               <h6 class="my-0"><%= item.name %></h6>
               <small class="text-muted"><%= cart_item.quantity %>点</small>
             </div>
-            <% if item.sale %>
-            <span class="text-muted"><%= item.sale_price * cart_item.quantity %>円</span>
-            <% @sale_amount += item.sale_price * cart_item.quantity %>
-            <% else %>
-            <span class="text-muted"><%= item.price * cart_item.quantity %>円</span>
-            <% @sale_amount += item.price * cart_item.quantity %>
-            <% end %>
+            <div>
+              <% if item.sale %>
+              <span class="text-muted my-0"><%= item.sale_price * cart_item.quantity %>円</span>
+              <% @sale_amount += item.sale_price * cart_item.quantity %>
+              <% else %>
+              <span class="text-muted"><%= item.price * cart_item.quantity %>円</span>
+              <% @sale_amount += item.price * cart_item.quantity %>
+              <% end %>
+              <%= link_to cart_item_path(cart_item.item_id), data: { turbo_method: :delete } do %>
+              <button type="button" class="btn btn-outline-secondary btn-sm">削除</button>
+              <% end %>
+            </div>
           </li>
           <% end %>
           <%# <li class="list-group-item d-flex justify-content-between bg-light">

@@ -20,7 +20,11 @@
           class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+          <li class="nav-item">
+            <%= link_to root_path, class: "nav-link active" do %>
+            Home
+            <% end %>
+          </li>
           <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
@@ -35,6 +39,7 @@
             </ul>
           </li>
         </ul>
+        <%= link_to cart_items_path do %>
         <form class="d-flex">
           <button class="btn btn-outline-dark" type="submit">
             <% @cart_items.each do |cart_item| %>
@@ -46,6 +51,7 @@
             <span class="badge bg-dark text-white ms-1 rounded-pill"><%= @top_quantity %></span>
           </button>
         </form>
+        <% end %>
       </div>
     </div>
   </nav>
