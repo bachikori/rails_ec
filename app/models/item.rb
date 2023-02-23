@@ -5,6 +5,6 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :stock, presence: true
   validates :image_name, presence: true
-  validates :review, presence: true
-  validates :sale, presence: true
+
+  has_many :cart_items
 end
