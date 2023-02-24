@@ -6,5 +6,5 @@ class Item < ApplicationRecord
   validates :stock, presence: true
   validates :image_name, presence: true
 
-  has_many :cart_items
+  has_many :cart_items, dependent: :destroy
 end

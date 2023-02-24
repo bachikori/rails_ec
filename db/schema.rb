@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_112102) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cart_id", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -39,4 +40,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_112102) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cart_items", "carts"
 end
