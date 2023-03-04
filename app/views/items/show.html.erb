@@ -18,7 +18,7 @@
           ipsam minima ea iste laborum vero?</p>
         <div class="d-flex">
           <%= form_with url: cart_items_path do |form| %>
-          <%= hidden_field_tag :item_id, @item.id %>
+          <%= form.hidden_field :item_id, value: @item.id %>
           <%= form.text_field :quantity, class: "form-control text-center me-3", value: 1, style: "max-width: 3rem" %>
           <%= button_tag(type= "submit", class: "btn btn-outline-dark flex-shrink-0") do %>
           <i class="bi-cart-fill me-1"></i>
@@ -76,7 +76,8 @@
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent text-center">
             <%= form_with url: cart_items_path do |form| %>
-            <%= hidden_field_tag :item_id, item.id %>
+            <%= form.hidden_field :item_id, value: item.id %>
+            <%= form.hidden_field :quantity, value: 1 %>
             <%= button_tag(type= "submit", class: "btn btn-outline-dark flex-shrink-0") do %>
             <i class="bi-cart-fill me-1"></i>
             Add to cart
