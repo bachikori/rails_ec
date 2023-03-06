@@ -5,4 +5,12 @@ class CartItem < ApplicationRecord
 
   belongs_to :cart
   belongs_to :item
+
+  def sale_total_amount(item, quantity)
+    item.sale_price * quantity
+  end
+
+  def total_amount(item, quantity)
+    item.price * quantity
+  end
 end
