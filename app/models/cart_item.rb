@@ -6,11 +6,11 @@ class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :item
 
-  def sale_total_amount(item, quantity)
+  def sale_total_amount
     item.sale_price * quantity
   end
 
-  def total_amount(item, quantity)
+  def total_amount
     item.price * quantity
   end
 end

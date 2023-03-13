@@ -16,19 +16,19 @@
         <ul class="list-group mb-3">
           <% sale_amount = [] %>
           <% current_cart.cart_items.each do |cart_item| %>
-          <% item = cart_item.item %>
+          <%# item = cart_item.item %>
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0"><%= item.name %></h6>
+              <h6 class="my-0"><%= cart_item.item.name %></h6>
               <small class="text-muted"><%= cart_item.quantity %>点</small>
             </div>
             <div>
-              <% if item.sale %>
-              <span class="text-muted my-0"><%= sale_total_amount(item, cart_item.quantity) %>円</span>
-              <% sale_amount << sale_total_amount(item, cart_item.quantity) %>
+              <% if cart_item.item.sale %>
+              <span class="text-muted my-0"><%= cart_item.sale_total_amount %>円</span>
+              <% sale_amount << cart_item.sale_total_amount %>
               <% else %>
-              <span class="text-muted"><%= total_amount(item, cart_item.quantity) %>円</span>
-              <% sale_amount << total_amount(item, cart_item.quantity) %>
+              <span class="text-muted"><%= cart_item.total_amount %>円</span>
+              <% sale_amount << cart_item.total_amount %>
               <% end %>
               <%= link_to cart_item_path(cart_item.item_id), data: { turbo_method: :delete } do %>
               <button type="button" class="btn btn-outline-secondary btn-sm">削除</button>
