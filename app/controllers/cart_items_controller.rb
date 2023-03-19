@@ -4,7 +4,7 @@ class CartItemsController < ApplicationController
   def index; end
 
   def create
-    @cart_item = current_cart.cart_items.build(cart_item_permit)
+    @cart_item = current_cart.cart_items.build(cart_item_params)
     flash[:notice] = '買い物かごに商品を追加できませんでした' unless @cart_item.save
     redirect_to cart_items_path
   end
@@ -17,7 +17,7 @@ class CartItemsController < ApplicationController
 
   private
 
-  def cart_item_permit
+  def cart_item_params
     params.permit(:item_id, :quantity)
   end
 end

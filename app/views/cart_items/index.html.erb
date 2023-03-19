@@ -14,7 +14,6 @@
           <span class="badge bg-primary rounded-pill"><%= current_cart.total_quantity %></span>
         </h4>
         <ul class="list-group mb-3">
-          <% sale_amount = [] %>
           <% current_cart.cart_items.each do |cart_item| %>
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
@@ -24,12 +23,10 @@
             <div>
               <% if cart_item.item.sale %>
               <span class="text-muted my-0"><%= cart_item.sale_total_amount %>円</span>
-              <% sale_amount << cart_item.sale_total_amount %>
               <% else %>
               <span class="text-muted"><%= cart_item.total_amount %>円</span>
-              <% sale_amount << cart_item.total_amount %>
               <% end %>
-              <%= link_to cart_path(cart_item.item_id), data: { turbo_method: :delete } do %>
+              <%= link_to cart_item_path(cart_item.item_id), data: { turbo_method: :delete } do %>
               <button type="button" class="btn btn-outline-secondary btn-sm">削除</button>
               <% end %>
             </div>
@@ -44,7 +41,7 @@
           </li> %>
           <li class="list-group-item d-flex justify-content-between">
             <span>合計金額</span>
-            <strong><%= sale_amount.sum %>円</strong>
+            <strong><%= current_cart.sale_amount %>円</strong>
           </li>
         </ul>
 
