@@ -2,7 +2,9 @@
   <main>
     <div class="py-5 text-center">
       <% if flash[:notice] %>
-      <div class="alert alert-danger"><%= flash[:notice] %></div>
+      <div class="alert alert-primary"><%= flash[:notice] %></div>
+      <% elsif flash[:danger] %>
+      <div class="alert alert-danger"><%= flash[:danger] %></div>
       <% end %>
       <h2>購入画面</h2>
     </div>
@@ -26,7 +28,7 @@
               <% else %>
               <span class="text-muted"><%= cart_item.total_amount %>円</span>
               <% end %>
-              <%= link_to cart_item_path(cart_item.item_id), data: { turbo_method: :delete } do %>
+              <%= link_to cart_item_path(cart_item.id), data: { turbo_method: :delete } do %>
               <button type="button" class="btn btn-outline-secondary btn-sm">削除</button>
               <% end %>
             </div>

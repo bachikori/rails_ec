@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root 'items#top'
   resources :items do
-    resources :cart_items, only: [:create]
+    resources :cart_items, only: %i[index create destroy]
   end
   resources :cart_items, only: %i[index destroy]
 end
