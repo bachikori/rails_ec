@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_04_081652) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_26_051858) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +29,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_081652) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "email", null: false
+    t.string "address", null: false
+    t.string "address2"
+    t.string "card_name", null: false
+    t.integer "card_number", null: false
+    t.integer "card_expiration", null: false
+    t.string "card_cvv", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_customers_on_cart_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
@@ -43,4 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_081652) do
 
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "items"
+  add_foreign_key "customers", "carts"
 end
