@@ -2,7 +2,7 @@
 ja:
   activerecord:
     attributes:
-      customer:
+      order:
         first_name: "性"
         last_name: "名"
         email: "メールアドレス"

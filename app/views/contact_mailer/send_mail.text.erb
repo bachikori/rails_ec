@@ -1,7 +1,7 @@
-<%= @customer.first_name %>様
+<%= @order.first_name %>様
 購入明細
 ---------------------------------
-<% @customer.cart.cart_items.each do |cart_item| %>
+<% @order.cart.cart_items.each do |cart_item| %>
   <%= cart_item.item.name %>  <%= cart_item.quantity %>点
   <% if cart_item.item.sale %>
     <%= cart_item.sale_total_amount %>円
@@ -10,4 +10,4 @@
   <% end %>
 <% end %>
 ---------------------------------
-合計 			<%= @customer.cart.sale_amount %>円
+合計 			<%= @order.cart.sale_amount %>円

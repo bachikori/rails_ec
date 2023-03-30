@@ -9,6 +9,6 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
 
   def stock_dec(quantity)
-    update(stock: stock - quantity)
+    update!(stock: stock - quantity)
   end
 end

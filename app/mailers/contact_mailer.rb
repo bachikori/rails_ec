@@ -4,10 +4,10 @@ class ContactMailer < ApplicationMailer
   default from: 'ya.7117.goo@gmail.com'
   layout 'mailer'
 
-  def send_mail(customer)
-    @customer = customer
+  def send_mail(order)
+    @order = order
     mail(
-      to: @customer.email,
+      to: @order.email,
       subject: 'Webサイトより購入明細が届きました'
     )
   end

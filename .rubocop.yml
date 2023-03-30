@@ -5,10 +5,13 @@ Style/Documentation:
   Enabled: false
 
 Metrics/MethodLength:
-  Enabled: false
+  Enabled: true
+  Max: 15
 
 Metrics/AbcSize:
-  Enabled: false
+  Enabled: true
+  Max: 40
 
 Metrics/BlockLength:
-  Enabled: false
+  Enabled: true
+  Max: 40

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Customer < ApplicationRecord
+class Order < ApplicationRecord
   belongs_to :cart
 
   validates :first_name, presence: true, length: { maximum: 10 }
