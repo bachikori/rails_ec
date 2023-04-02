@@ -3,7 +3,6 @@
 class OrdersController < ApplicationController
   def create
     @order = current_cart.build_order(order_session_params)
-    # binding.pry
     @order.transaction do
       @order.save!
       current_cart.buy
@@ -27,6 +26,6 @@ class OrdersController < ApplicationController
 
   def order_session_params
     params.require(:session).permit(:first_name, :last_name, :email, :address, :address2, :card_name, :card_number, :card_expiration,
-                  :card_cvv)
+                                    :card_cvv)
   end
 end

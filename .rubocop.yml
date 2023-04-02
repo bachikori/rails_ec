@@ -15,3 +15,7 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Enabled: true
   Max: 40
+
+Layout/LineLength:
+  Enabled: true
+  Max: 140
