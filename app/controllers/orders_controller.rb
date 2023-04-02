@@ -2,7 +2,8 @@
 
 class OrdersController < ApplicationController
   def create
-    @order = current_cart.build_order(order_params)
+    @order = current_cart.build_order(order_session_params)
+    # binding.pry
     @order.transaction do
       @order.save!
       current_cart.buy
@@ -19,23 +20,13 @@ class OrdersController < ApplicationController
 
   private
 
-  # def do_transaction(order)
-  #   order.transaction do
-  #     order.save!
-  #     current_cart.buy
-  #     unless ContactMailer.send_mail(order).deliver_now
-  #       raise RuntimeError, "メール送信に失敗しました。"
-  #     end
-  #   end
-  # end
-
   def delete_info
     current_cart.destroy
     reset_session
   end
 
-  def order_params
-    params.permit(:first_name, :last_name, :email, :address, :address2, :card_name, :card_number, :card_expiration,
+  def order_session_params
+    params.require(:session).permit(:first_name, :last_name, :email, :address, :address2, :card_name, :card_number, :card_expiration,
                   :card_cvv)
   end
 end
