@@ -72,21 +72,21 @@
             <div class="row g-3">
               <div class="col-sm-6">
                 <%= f.label :first_name, '性', class: "form-label" %>
-                <%= f.text_field :first_name, class: "form-control" %>
+                <%= f.text_field :first_name, class: "form-control", placeholder: "田中" %>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-sm-6">
                 <%= f.label :last_name, '名', class: "form-label" %>
-                <%= f.text_field :last_name, class: "form-control" %>
+                <%= f.text_field :last_name, class: "form-control", placeholder: "太郎" %>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
               </div>
               <div class="col-12">
                 <%= f.label :email, 'メールアドレス', class: "form-label" %>
-                <%= f.text_field :email, class: "form-control" %>
+                <%= f.text_field :email, class: "form-control", placeholder: "tanaka@example.com" %>
                 <div class="invalid-feedback">
                   Please enter a valid email address for shipping updates.
                 </div>
@@ -116,21 +116,21 @@
               </div>
               <div class="col-md-6">
                 <%= f.label :card_number, 'クレジットカード番号', class: "form-label" %>
-                <%= f.text_field :card_number, class: "form-control" %>
+                <%= f.text_field :card_number, class: "form-control", maxlength: "16" %>
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
               </div>
               <div class="col-md-3">
                 <%= f.label :card_expiration, '有効期限', class: "form-label" %>
-                <%= f.text_field :card_expiration, class: "form-control" %>
+                <%= f.text_field :card_expiration, class: "form-control", maxlength: "4" %>
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
               </div>
               <div class="col-md-3">
                 <%= f.label :card_cvv, 'cvv', class: "form-label" %>
-                <%= f.text_field :card_cvv, class: "form-control" %>
+                <%= f.text_field :card_cvv, class: "form-control", maxlength: "4" %>
                 <div class="invalid-feedback">
                   Security code required
                 </div>
