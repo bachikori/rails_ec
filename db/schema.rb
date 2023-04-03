@@ -48,9 +48,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_30_055354) do
     t.string "address", null: false
     t.string "address2"
     t.string "card_name", null: false
-    t.integer "card_number", null: false
+    t.string "card_number", null: false
     t.integer "card_expiration", null: false
-    t.string "card_cvv", null: false
+    t.integer "card_cvv", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

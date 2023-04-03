@@ -21,7 +21,7 @@ class Cart < ApplicationRecord
 
   def buy
     cart_items.each do |cart_item|
-      cart_item.item.stock_dec(cart_item.quantity)
+      cart_item.item.stock_dec!(cart_item.quantity)
     end
   end
 end

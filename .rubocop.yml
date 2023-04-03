@@ -19,3 +19,7 @@ Metrics/BlockLength:
 Layout/LineLength:
   Enabled: true
   Max: 140
+
+  Style/NumericLiterals:
+    Enabled: true
+    Max: 18

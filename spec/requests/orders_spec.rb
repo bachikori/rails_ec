@@ -10,9 +10,9 @@ RSpec.describe 'Orders', type: :request do
         last_name: '太郎',
         email: 'tanaka@gmail.com',
         address: '東京都',
-        card_name: 'tanaka',
-        card_number: 123,
-        card_expiration: 123,
+        card_name: 'TAROTANAKA',
+        card_number: 12_333_331_211_111,
+        card_expiration: 1233,
         card_cvv: 123,
         cart_id: 12
       } }

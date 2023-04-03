@@ -9,9 +9,9 @@ class CreateCustomers < ActiveRecord::Migration[7.0]
       t.string :address, null: false
       t.string :address2
       t.string :card_name, null: false
-      t.integer :card_number, null: false
+      t.string :card_number, null: false
       t.integer :card_expiration, null: false
-      t.string :card_cvv, null: false
+      t.integer :card_cvv, null: false
       t.references :cart, null: false, foreign_key: true
 
       t.timestamps
