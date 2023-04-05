@@ -3,3 +3,23 @@ require:
   - rubocop-rspec
 Style/Documentation:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 15
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 40
+
+Metrics/BlockLength:
+  Enabled: true
+  Max: 40
+
+Layout/LineLength:
+  Enabled: true
+  Max: 140
+
+  Style/NumericLiterals:
+    Enabled: true
+    Max: 18

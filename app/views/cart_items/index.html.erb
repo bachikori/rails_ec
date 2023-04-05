@@ -52,149 +52,103 @@
           </div>
         </form>
       </div>
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">請求先住所</h4>
-        <form class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
+      <% if current_cart.cart_items.empty? %>
+        <div class="col-md-7 col-lg-8 d-flex align-items-center justify-content-center">
+          <p>買い物かごに商品がありません。</p>
+        </div>
+      <% else %>
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">請求先住所</h4>
+          <% if @order %>
+            <div class="alert alert-danger">
+              <ul>
+                <% @order.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
             </div>
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="username" class="form-label">Username</label>
-              <div class="input-group has-validation">
-                <span class="input-group-text">@</span>
-                <input type="text" class="form-control" id="username" placeholder="Username" required>
+          <% end %>
+          <%= form_with scope: :session, model: @order, url: orders_path, class: "needs-validation" do |f| %>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <%= f.label :first_name, '性', class: "form-label" %>
+                <%= f.text_field :first_name, class: "form-control", placeholder: "田中" %>
                 <div class="invalid-feedback">
-                  Your username is required.
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <%= f.label :last_name, '名', class: "form-label" %>
+                <%= f.text_field :last_name, class: "form-control", placeholder: "太郎" %>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+              <div class="col-12">
+                <%= f.label :email, 'メールアドレス', class: "form-label" %>
+                <%= f.text_field :email, class: "form-control", placeholder: "tanaka@example.com" %>
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+              <div class="col-12">
+                <%= f.label :address, '住所', class: "form-label" %>
+                <%= f.text_field :address, class: "form-control", placeholder: "東京都港区六本木○-○-○" %>
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+              <div class="col-12">
+                <%= f.label :address2, '建物名', class: "form-label" %>
+                <%= f.text_field :address2, class: "form-control", placeholder: "マンション名101" %>
+              </div>
+            </div>
+            <hr class="my-4">
+            <h4 class="mb-3">お支払い</h4>
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <%= f.label :card_name, 'カードの名前', class: "form-label" %>
+                <%= f.text_field :card_name, class: "form-control", placeholder: "TAROTANAKA" %>
+                <small class="text-muted">カードに記載されているフルネーム</small>
+                <div class="invalid-feedback">
+                  Name on card is required
+                </div>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :card_number, 'クレジットカード番号', class: "form-label" %>
+                <%= f.text_field :card_number, class: "form-control", maxlength: "16" %>
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+              <div class="col-md-3">
+                <%= f.label :card_expiration, '有効期限', class: "form-label" %>
+                <%= f.text_field :card_expiration, class: "form-control", maxlength: "4", placeholder: "2301" %>
+                <small class="text-muted">2023年1月</small>
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+              <div class="col-md-3">
+                <%= f.label :card_cvv, 'cvv', class: "form-label" %>
+                <%= f.text_field :card_cvv, class: "form-control", maxlength: "4", placeholder: "000" %>
+                <div class="invalid-feedback">
+                  Security code required
                 </div>
               </div>
             </div>
-            <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-            </div>
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required>
-                <option value="">Choose...</option>
-                <option>United States</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" required>
-                <option value="">Choose...</option>
-                <option>California</option>
-              </select>
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-            <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
-              <div class="invalid-feedback">
-                Zip code required.
-              </div>
-            </div>
-          </div>
-          <hr class="my-4">
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">Shipping address is the same as my billing
-              address</label>
-          </div>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info">
-            <label class="form-check-label" for="save-info">Save this information for next time</label>
-          </div>
-          <hr class="my-4">
-          <h4 class="mb-3">Payment</h4>
-          <div class="my-3">
-            <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-              <label class="form-check-label" for="credit">Credit card</label>
-            </div>
-            <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="debit">Debit card</label>
-            </div>
-            <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-          <div class="row gy-3">
-            <div class="col-md-6">
-              <label for="cc-name" class="form-label">Name on card</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required>
-              <small class="text-muted">Full name as displayed on card</small>
-              <div class="invalid-feedback">
-                Name on card is required
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label for="cc-number" class="form-label">Credit card number</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required>
-              <div class="invalid-feedback">
-                Credit card number is required
-              </div>
-            </div>
-            <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">Expiration</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-              <div class="invalid-feedback">
-                Expiration date required
-              </div>
-            </div>
-            <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-              <div class="invalid-feedback">
-                Security code required
-              </div>
-            </div>
-          </div>
-          <hr class="my-4">
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-        </form>
-      </div>
+            <hr class="my-4">
+            <%= f.submit '購入する', class: "w-100 btn btn-primary btn-lg" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </main>
   <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">&copy; 2017–{{< year >}} Company Name</p>
-      <ul class="list-inline">
-        <li class="list-inline-item"><a href="#">Privacy</a></li>
-        <li class="list-inline-item"><a href="#">Terms</a></li>
-        <li class="list-inline-item"><a href="#">Support</a></li>
-      </ul>
-    </footer>
-  </div>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>

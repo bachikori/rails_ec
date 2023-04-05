@@ -13,15 +13,15 @@
             <%= @item.price %>円
           <% end %>
         </div>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem
-          modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus
-          ipsam minima ea iste laborum vero?</p>
+        <p class="lead">当店では、可愛らしいアザラシの画像を取り扱っています。アザラシは、水中での泳ぎが得意な哺乳類であり、その愛らしい姿勢や表情は多くの人々に愛されています。
+        当店のアザラシの画像は、高品質の素材を使用して制作されており、そのリアルな表現力や美しい色合いによって、まるで生きているかのような印象を与えます。オフィスや待合室のインテリアとしておすすめです。
+        ぜひ当店のアザラシの画像をお買い求めいただき、可愛らしいアザラシの世界に浸ってみてください。</p>
         <div class="d-flex">
           <%= form_with url: item_cart_items_path(@item.id) do |form| %>
             <%= form.text_field :quantity, class: "form-control text-center me-3", value: 1, style: "max-width: 3rem" %>
             <%= button_tag(type= "submit", class: "btn btn-outline-dark flex-shrink-0") do %>
               <i class="bi-cart-fill me-1"></i>
-              Add to cart
+              カートに追加
             <% end %>
           <% end %>
         </div>
@@ -78,7 +78,7 @@
                 <%= form.hidden_field :quantity, value: 1 %>
                 <%= button_tag(type= "submit", class: "btn btn-outline-dark flex-shrink-0") do %>
                   <i class="bi-cart-fill me-1"></i>
-                  Add to cart
+                  カートに追加
                 <% end %>
               <% end %>
             </div>
