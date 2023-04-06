@@ -26,3 +26,11 @@ Item.create!([
                { name: '人気商品', price: 4000, stock: 30, image_name: 'azarashi.png', sale: false,
                  review: true, sale_price: nil }
              ])
+
+Promotion.create!([
+                    { promo_code: 11_111, discount: 100 },
+                    { promo_code: 22_222, discount: 200 },
+                    { promo_code: 33_333, discount: 300 },
+                    { promo_code: 44_444, discount: 400 },
+                    { promo_code: 55_555, discount: 500 }
+                  ])

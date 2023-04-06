@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   root 'items#top'
+  post '/promotions/use', to: 'promotions#use'
   resources :items do
     resources :cart_items, only: %i[index create destroy]
   end

@@ -20,7 +20,11 @@ class OrdersController < ApplicationController
   private
 
   def delete_info
-    current_cart.destroy!
+    if current_cart.promotion
+      current_cart.promotion.destroy!
+    else
+      current_cart.destroy!
+    end
     reset_session
   end
 

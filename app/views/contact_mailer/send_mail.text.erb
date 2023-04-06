@@ -9,5 +9,8 @@
     <%= cart_item.total_amount %>円
   <% end %>
 <% end %>
+割引金額  <% if @order.cart.promotion %>
+  -<%= @order.cart.promotion.discount %>円
+<% end %>
 ---------------------------------
 合計 			<%= @order.cart.sale_amount %>円

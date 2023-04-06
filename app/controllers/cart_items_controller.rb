@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CartItemsController < ApplicationController
+  before_action :current_cart, only: [:index]
   def index; end
 
   def create
