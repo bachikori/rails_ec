@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class Promotion < ApplicationRecord
-  has_one :cart, dependent: :destroy
+  belongs_to :cart, optional: true
 end

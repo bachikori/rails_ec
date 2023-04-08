@@ -3,10 +3,11 @@
 class OrdersController < ApplicationController
   def create
     @order = current_cart.build_order(order_session_params)
+    promotion = current_cart.promotion
     @order.transaction do
       @order.save!
       current_cart.buy
-      raise 'メール送信に失敗しました。' unless ContactMailer.send_mail(@order).deliver_now
+      raise 'メール送信に失敗しました。' unless ContactMailer.send_mail(@order, promotion).deliver_now
 
       delete_info
     end
@@ -20,11 +21,7 @@ class OrdersController < ApplicationController
   private
 
   def delete_info
-    if current_cart.promotion
-      current_cart.promotion.destroy!
-    else
-      current_cart.destroy!
-    end
+    current_cart.destroy!
     reset_session
   end
 

@@ -5,6 +5,7 @@ class CreatePromotions < ActiveRecord::Migration[7.0]
     create_table :promotions do |t|
       t.string :promo_code, null: false
       t.integer :discount, null: false
+      t.references :cart, foreign_key: true
 
       t.timestamps
     end

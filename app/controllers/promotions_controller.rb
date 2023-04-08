@@ -2,8 +2,9 @@
 
 class PromotionsController < ApplicationController
   def use
+    current_cart.promotion&.update!(cart_id: nil)
     promotion = Promotion.find_by!(promo_code: params[:promo_code])
-    current_cart.update!(promotion_id: promotion.id)
+    promotion.update!(cart_id: current_cart.id)
     redirect_to cart_items_path
   end
 end
