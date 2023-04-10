@@ -3,11 +3,10 @@
 class OrdersController < ApplicationController
   def create
     @order = current_cart.build_order(order_session_params)
-    promotion = current_cart.promotion
     @order.transaction do
       @order.save!
       current_cart.buy
-      raise 'メール送信に失敗しました。' unless ContactMailer.send_mail(@order, promotion).deliver_now
+      raise 'メール送信に失敗しました。' unless ContactMailer.send_mail(@order, current_cart.promotion).deliver_now
 
       delete_info
     end
