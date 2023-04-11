@@ -3,6 +3,7 @@
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_one :order, dependent: :destroy
+  has_one :promotion, dependent: :destroy
 
   def total_quantity
     cart_items.sum { |hash| hash[:quantity] }
@@ -16,7 +17,11 @@ class Cart < ApplicationRecord
         cart_item.item.price * cart_item.quantity
       end
     end
-    current_cart_prices.sum
+    if promotion
+      current_cart_prices.sum - promotion.discount
+    else
+      current_cart_prices.sum
+    end
   end
 
   def buy

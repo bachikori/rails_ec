@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
     @order.transaction do
       @order.save!
       current_cart.buy
-      raise 'メール送信に失敗しました。' unless ContactMailer.send_mail(@order).deliver_now
+      raise 'メール送信に失敗しました。' unless ContactMailer.send_mail(@order, current_cart.promotion).deliver_now
 
       delete_info
     end
